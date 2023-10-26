@@ -20,10 +20,14 @@ async function fakerapi() {
 
     for (key in response) {
         console.log(response[key].name);
-        list.innerHTML += `
-        <li class="post">
-        <>${response[key].name}</>
-        </li>
-        `
+        if (!response[key] == "") {
+            list.innerHTML += `
+            <li class="post">
+            <>${response[key].name}</>
+            </li>
+            `
+        } else {
+            list.innerHTML = 'No items'
+        }
     }
 }
