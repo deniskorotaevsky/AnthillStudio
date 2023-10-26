@@ -23,7 +23,7 @@ async function fakerapi() {
         if (!response[key] == "") {
             list.innerHTML += `
             <li class="post">
-            <>${response[key].name}</>
+        ${response[key].name}</>
             </li>
             `
         } else {
