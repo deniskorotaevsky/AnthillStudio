@@ -2,10 +2,15 @@ const url = 'https://fakerapi.it/api/v1/companies?quantity=';
 
 const input = document.querySelector('.input');
 const btn = document.querySelector('.submit');
+const list = document.querySelector('.posts');
 
 btn.addEventListener('click', () => {
-    document.querySelector('.posts').innerHTML = '';
-    if (input.value.length > 0) fakerapi();
+    list.innerHTML = '';
+    if (input.value >= 1) {
+        fakerapi();
+    } else {
+        list.innerHTML = 'No items';
+    }
     input.value = '';
 });
 
@@ -15,19 +20,18 @@ async function fakerapi() {
     let data = await res.json();
     let response = data.data;
 
-    let list = document.querySelector('.posts');
     let key;
 
     for (key in response) {
-        console.log(response[key].name);
-        if (!response[key] == "") {
+        if (response[key]) {
             list.innerHTML += `
             <li class="post">
-        ${response[key].name}</>
+        ${response[key].name}
+        </>
             </li>
             `
-        } else {
-            list.innerHTML = 'No items'
         }
     }
 }
+
+
